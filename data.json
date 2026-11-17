@@ -1,0 +1,146 @@
+{
+  "hero": "",
+  "menu": [
+    {
+      "kategori": "Seafood",
+      "ikon": "🐟",
+      "nama": "Ikan Bakar",
+      "desk": "Ikan laut segar, bumbu bakar, sambal matah.",
+      "min": 35000,
+      "max": 70000
+    },
+    {
+      "kategori": "Seafood",
+      "ikon": "🦑",
+      "nama": "Cumi Bakar / Goreng",
+      "desk": "Cumi empuk, pilih bakar atau goreng tepung.",
+      "min": 30000,
+      "max": 50000
+    },
+    {
+      "kategori": "Seafood",
+      "ikon": "🦐",
+      "nama": "Udang Bakar / Goreng",
+      "desk": "Udang segar dengan saus pilihan.",
+      "min": 35000,
+      "max": 60000
+    },
+    {
+      "kategori": "Seafood",
+      "ikon": "🦀",
+      "nama": "Kepiting Saus Padang",
+      "desk": "Kepiting besar, saus pedas gurih.",
+      "min": 60000,
+      "max": 120000
+    },
+    {
+      "kategori": "Seafood",
+      "ikon": "🐚",
+      "nama": "Kerang Saus Tiram",
+      "desk": "Kerang rebus disiram saus tiram.",
+      "min": 25000,
+      "max": 40000
+    },
+    {
+      "kategori": "Seafood",
+      "ikon": "🍢",
+      "nama": "Sate Ikan",
+      "desk": "Sate ikan bumbu Bali, per porsi.",
+      "min": 20000,
+      "max": 30000
+    },
+    {
+      "kategori": "Nasi & Pendamping",
+      "ikon": "🍚",
+      "nama": "Nasi Putih",
+      "desk": "Nasi hangat.",
+      "min": 5000
+    },
+    {
+      "kategori": "Nasi & Pendamping",
+      "ikon": "🥬",
+      "nama": "Plecing Kangkung",
+      "desk": "Kangkung rebus, sambal tomat khas Lombok.",
+      "min": 12000,
+      "max": 18000
+    },
+    {
+      "kategori": "Nasi & Pendamping",
+      "ikon": "🌶️",
+      "nama": "Sambal Matah",
+      "desk": "Sambal irisan bawang, serai, cabai.",
+      "min": 5000,
+      "max": 10000
+    },
+    {
+      "kategori": "Nasi & Pendamping",
+      "ikon": "🍤",
+      "nama": "Tahu Tempe Goreng",
+      "desk": "Goreng garing, per porsi.",
+      "min": 8000,
+      "max": 12000
+    },
+    {
+      "kategori": "Minuman",
+      "ikon": "🧊",
+      "nama": "Es Teh",
+      "desk": "Manis atau tawar.",
+      "min": 5000,
+      "max": 8000
+    },
+    {
+      "kategori": "Minuman",
+      "ikon": "🍊",
+      "nama": "Es Jeruk",
+      "desk": "Jeruk peras segar.",
+      "min": 8000,
+      "max": 12000
+    },
+    {
+      "kategori": "Minuman",
+      "ikon": "🥥",
+      "nama": "Es Kelapa Muda",
+      "desk": "Kelapa muda utuh atau gelas.",
+      "min": 12000,
+      "max": 18000
+    },
+    {
+      "kategori": "Minuman",
+      "ikon": "🍧",
+      "nama": "Es Campur",
+      "desk": "Aneka isi, sirup, susu.",
+      "min": 12000,
+      "max": 18000
+    },
+    {
+      "kategori": "Minuman",
+      "ikon": "☕",
+      "nama": "Kopi Bali",
+      "desk": "Kopi tubruk panas.",
+      "min": 8000,
+      "max": 12000
+    },
+    {
+      "kategori": "Minuman",
+      "ikon": "💧",
+      "nama": "Air Mineral",
+      "desk": "Botol dingin atau biasa.",
+      "min": 4000,
+      "max": 6000
+    }
+  ],
+  "promo": [
+    {
+      "nama": "Paket Hemat Berdua",
+      "desk": "1 ikan bakar, 1 cumi goreng, 2 nasi putih, 2 es teh.",
+      "harga": 85000,
+      "hargaAsli": 105000
+    },
+    {
+      "nama": "Paket Keluarga",
+      "desk": "2 ikan bakar, 1 kepiting saus padang, 1 udang bakar, 4 nasi putih, plecing kangkung, 4 es teh.",
+      "harga": 225000,
+      "hargaAsli": 270000
+    }
+  ]
+}

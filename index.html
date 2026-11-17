@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cak Jul Seafood Negari Klungkung</title>
+  <meta name="description" content="Warung makan Cak Jul Seafood Negari Klungkung. Lihat menu makanan dan minuman beserta kisaran harga.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="#atas">Cak Jul Seafood</a>
+    <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="drawer">
+      <svg class="ikon-garis" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+        <g class="g-buka"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></g>
+        <g class="g-tutup"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></g>
+      </svg>
+    </button>
+    <nav class="drawer" id="drawer" hidden>
+      <button type="button" id="open-login">Login</button>
+      <a href="#lokasi">Lokasi</a>
+      <a href="#tentang">Tentang</a>
+    </nav>
+  </header>
+
+  <dialog id="login" aria-labelledby="login-judul">
+    <form id="login-form">
+      <h2 id="login-judul">Login</h2>
+      <label>Username
+        <input type="text" name="user" autocomplete="username" required>
+      </label>
+      <label>Password
+        <input type="password" name="pass" autocomplete="current-password" required>
+      </label>
+      <p class="login-pesan" id="login-pesan" role="status"></p>
+      <div class="login-aksi">
+        <button type="button" class="btn-batal" id="tutup-login">Batal</button>
+        <button type="submit" class="btn btn-small">Masuk</button>
+      </div>
+    </form>
+  </dialog>
+
+  <main id="atas">
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <p class="hero-place">Negari, Klungkung</p>
+        <h1>Cak Jul<br>Seafood</h1>
+        <p class="hero-text">Ikan, cumi, udang, dan kerang segar dimasak saat dipesan. Makan di tempat atau bungkus.</p>
+        <a class="btn" href="#menu">Lihat menu</a>
+      </div>
+      <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,40 C240,90 480,0 720,40 C960,80 1200,10 1440,40 L1440,80 L0,80 Z"></path>
+      </svg>
+    </section>
+
+    <section class="promo" id="promo" hidden>
+      <div class="promo-in">
+        <h2>Paket promo</h2>
+        <p class="note">Lebih hemat untuk makan bersama.</p>
+        <div class="grid" id="promo-grid"></div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu">
+      <h2>Menu</h2>
+      <p class="note">Harga adalah kisaran, tergantung ukuran dan porsi.</p>
+
+      <div class="tabs" id="tabs" role="tablist" aria-label="Kategori menu"></div>
+      <div class="grid" id="menu-grid"></div>
+    </section>
+
+    <section class="tentang" id="tentang">
+      <h2>Tentang kami</h2>
+      <p>Cak Jul Seafood adalah warung makan di Negari, Klungkung, yang menyajikan ikan, cumi, udang, kepiting, dan kerang segar, lengkap dengan nasi, lauk pendamping, dan minuman. Semua dimasak saat dipesan.</p>
+      <p><small>(ganti teks ini dengan cerita warung yang sebenarnya)</small></p>
+    </section>
+
+    <section class="lokasi" id="lokasi">
+      <h2>Lokasi dan jam buka</h2>
+      <div class="info">
+        <div>
+          <h3>Alamat</h3>
+          <p>Negari, Klungkung, Bali<br><small>(ganti dengan alamat lengkap)</small></p>
+        </div>
+        <div>
+          <h3>Jam buka</h3>
+          <p>Setiap hari, 10.00 – 22.00 WITA<br><small>(ganti sesuai jam buka)</small></p>
+        </div>
+        <div>
+          <h3>Pesan</h3>
+          <p><a class="btn btn-small" href="https://wa.me/82235565552" target="_blank" rel="noopener">Chat WhatsApp</a><br><small>(ganti nomor di index.html)</small></p>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="peta" id="peta" data-lat="-8.5677926" data-lng="115.3796793">
+      <div class="peta-dasar" aria-hidden="true">
+        <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice">
+          <rect width="600" height="340" fill="#EFEBE1"/>
+          <path d="M0 262 C120 232 200 302 330 272 C450 244 520 282 600 257 L600 340 L0 340Z" fill="#AADAE8"/>
+          <rect x="440" y="40" width="120" height="90" rx="14" fill="#C8E3B8"/>
+          <rect x="40" y="170" width="110" height="70" rx="14" fill="#C8E3B8"/>
+          <g stroke="#fff" stroke-width="14" fill="none" stroke-linecap="round">
+            <path d="M-10 120 L610 170"/><path d="M180 -10 L260 350"/><path d="M420 -10 L380 350"/>
+          </g>
+          <g stroke="#FBE9A6" stroke-width="7" fill="none" stroke-linecap="round">
+            <path d="M-10 60 L610 40"/><path d="M0 215 L600 195"/><path d="M90 -10 L120 350"/>
+          </g>
+          <text x="300" y="196" text-anchor="middle" font-family="Figtree, sans-serif" font-weight="700" font-size="17"
+                fill="#0E3B43" stroke="#fff" stroke-width="4" paint-order="stroke">Cak Jul Seafood</text>
+        </svg>
+      </div>
+      <div class="peta-tiles" id="peta-tiles" aria-hidden="true"></div>
+      <svg class="pin" viewBox="0 0 38 48" aria-hidden="true">
+        <path d="M19 47 C19 47 3 29 3 18 a16 16 0 0 1 32 0 C35 29 19 47 19 47Z" fill="#D6362B" stroke="#fff" stroke-width="2.5"/>
+        <circle cx="19" cy="18" r="6" fill="#fff"/>
+      </svg>
+      <a class="peta-klik" href="https://maps.app.goo.gl/UYkGHA1Ngo4Z4FeJ8" target="_blank" rel="noopener"
+         aria-label="Buka lokasi Cak Jul Seafood di aplikasi Google Maps"></a>
+
+      <div class="peta-kartu">
+        <div class="pk-info">
+          <strong>Cak Jul Seafood</strong>
+          <span>Negari, Klungkung, Bali</span>
+          <a href="https://maps.app.goo.gl/UYkGHA1Ngo4Z4FeJ8" target="_blank" rel="noopener">Lihat peta lebih besar</a>
+        </div>
+        <a class="pk-aksi" href="https://maps.app.goo.gl/UYkGHA1Ngo4Z4FeJ8" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 2.5l9.5 9.5-9.5 9.5L2.5 12z"/><path d="M8.5 15v-3a1.5 1.5 0 0 1 1.5-1.5h5m0 0l-2-2m2 2l-2 2"/></svg>
+          <span>Petunjuk arah</span>
+        </a>
+        <a class="pk-aksi" href="https://maps.app.goo.gl/UYkGHA1Ngo4Z4FeJ8" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>
+          <span>Simpan</span>
+        </a>
+      </div>
+
+      <div class="peta-zoom">
+        <button type="button" id="zoom-in" aria-label="Perbesar peta">+</button>
+        <button type="button" id="zoom-out" aria-label="Perkecil peta">&minus;</button>
+      </div>
+      <a class="atribusi" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">&copy; OpenStreetMap</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="tahun"></span> Cak Jul Seafood Negari Klungkung</p>
+  </footer>
+
+  <div id="admin">
+    <header class="adm-bar">
+      <h1>Panel Admin</h1>
+      <div class="adm-nav">
+        <a href="#" class="btn btn-small" id="lihat">Lihat website</a>
+        <button type="button" class="btn-batal" id="keluar">Keluar</button>
+      </div>
+    </header>
+
+    <div class="adm-isi">
+      <section class="adm-kartu">
+        <h2>Background judul website</h2>
+        <p class="note">Gambar ini jadi latar bagian paling atas website (tempat tulisan Cak Jul Seafood).</p>
+        <div class="hero-prev" id="hero-prev"><span>Belum ada gambar</span></div>
+        <div class="adm-aksi">
+          <label class="btn btn-small file-btn">Pilih gambar
+            <input type="file" id="hero-file" accept="image/*" hidden>
+          </label>
+          <button type="button" class="btn-batal" id="hero-hapus">Hapus gambar</button>
+        </div>
+      </section>
+
+      <section class="adm-kartu">
+        <h2>Paket promo</h2>
+        <p class="note">Card paket promo yang tampil di atas daftar menu. Kosongkan semua jika tidak ada promo.</p>
+        <div id="adm-promo"></div>
+        <button type="button" class="btn btn-small" id="tambah-promo">+ Tambah paket promo</button>
+      </section>
+
+      <section class="adm-kartu">
+        <h2>Menu</h2>
+        <p class="note">Ubah nama, deskripsi, harga, dan foto. Tekan Simpan setelah selesai.</p>
+        <div id="adm-list"></div>
+        <button type="button" class="btn btn-small" id="tambah">+ Tambah menu</button>
+      </section>
+    </div>
+
+    <div class="adm-simpan">
+      <span id="adm-status" role="status"></span>
+      <button type="button" class="btn-batal" id="reset">Reset</button>
+      <button type="button" class="btn-batal" id="ekspor">Unduh data.json</button>
+      <button type="button" class="btn btn-small" id="simpan">Simpan</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
