@@ -465,3 +465,25 @@ muatData().then(d => { data = d; renderPublik(); rute(); });
   document.addEventListener("touchend", () => setTimeout(bersih, 700));
   document.addEventListener("mouseleave", bersih);
 })();
+
+// ===== KARTU MENU MUNCUL BERGANTIAN SAAT TERLIHAT =====
+(function () {
+  if (!("IntersectionObserver" in window)) return;
+  document.documentElement.classList.add("js-anim");
+  const io = new IntersectionObserver(entri => {
+    let n = 0;
+    entri.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.style.setProperty("--urut", Math.min(n++, 8) * 80 + "ms");
+      e.target.classList.add("muncul");
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.12 });
+  function pantau(el) { el.querySelectorAll(".item:not(.muncul)").forEach(k => io.observe(k)); }
+  ["menu-grid", "promo-grid"].forEach(id => {
+    const g = document.getElementById(id);
+    if (!g) return;
+    new MutationObserver(() => pantau(g)).observe(g, { childList: true });
+    pantau(g);
+  });
+})();
