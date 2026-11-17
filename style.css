@@ -383,3 +383,45 @@ body.mode-admin .topbar, body.mode-admin main, body.mode-admin footer { display:
   .item.dekat .icon .emo, .brand, .hero h1 .huruf { animation: none !important; }
   .brand { -webkit-text-fill-color: #fff; background: none; color: #fff; }
 }
+
+/* ===== Gelombang pembatas hero ===== */
+.ombak { position: absolute; left: 0; bottom: -1px; width: 100%; height: 90px; overflow: hidden; pointer-events: none; }
+.gel { position: absolute; left: 0; bottom: 0; width: 200%; height: 100%; fill: var(--buih); will-change: transform; }
+.gel-1 { opacity: 0.35; height: 100%; animation: ombak-geser 14s linear infinite; }
+.gel-2 { opacity: 0.6; height: 78%; animation: ombak-geser 9s linear infinite reverse; }
+.gel-3 { opacity: 1; height: 55%; animation: ombak-geser 6s linear infinite; }
+@keyframes ombak-geser { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ===== Kartu menu muncul bergantian ===== */
+.js-anim .item:not(.muncul) { opacity: 0; }
+.item.muncul { animation: kartu-muncul 0.65s cubic-bezier(.2,.9,.3,1.25) var(--urut, 0ms) backwards; }
+@keyframes kartu-muncul {
+  from { opacity: 0; transform: translateY(40px) scale(0.85) rotate(-3deg); }
+  60% { opacity: 1; }
+  to { opacity: 1; transform: none; }
+}
+.tab[aria-selected="true"] { animation: tab-pop 0.45s cubic-bezier(.2,.9,.3,1.5); }
+@keyframes tab-pop { 0% { transform: scale(0.85); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .gel, .item.muncul, .tab[aria-selected="true"] { animation: none !important; }
+  .js-anim .item:not(.muncul) { opacity: 1; }
+}
+
+/* ===== Judul melayang / mengambang (update) ===== */
+.hero h1 { animation: judul-melayang 6s ease-in-out infinite; }
+@keyframes judul-melayang { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.hero h1 .huruf {
+  text-shadow: 0 0.06em 0.18em rgba(0, 0, 0, 0.3);
+  animation:
+    huruf-masuk 0.7s cubic-bezier(.2,.9,.3,1.4) both,
+    huruf-ayun 3.2s ease-in-out infinite,
+    huruf-kilau 5s ease-in-out infinite;
+  animation-delay: calc(var(--d) * 70ms), calc(0.8s + var(--d) * 180ms), calc(var(--d) * 150ms);
+}
+@keyframes huruf-ayun {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-0.11em) rotate(-2deg); }
+  50% { transform: translateY(-0.2em) rotate(0deg); }
+  75% { transform: translateY(-0.09em) rotate(2deg); }
+}
+@media (prefers-reduced-motion: reduce) { .hero h1 { animation: none; } }
