@@ -378,11 +378,7 @@ body.mode-admin .topbar, body.mode-admin main, body.mode-admin footer { display:
 @keyframes huruf-kilau { 0%, 70%, 100% { color: #fff; } 80% { color: var(--pasir); } }
 @keyframes huruf-loncat { 0% { transform: none; } 40% { transform: translateY(-0.25em) scale(1.2, 0.9) rotate(-6deg); } 100% { transform: none; } }
 
-@media (prefers-reduced-motion: reduce) {
-  .item, .item.dekat { transform: none !important; transition: none; }
-  .item.dekat .icon .emo, .brand, .hero h1 .huruf { animation: none !important; }
-  .brand { -webkit-text-fill-color: #fff; background: none; color: #fff; }
-}
+
 
 /* ===== Gelombang pembatas hero ===== */
 .ombak { position: absolute; left: 0; bottom: -1px; width: 100%; height: 90px; overflow: hidden; pointer-events: none; }
@@ -402,10 +398,7 @@ body.mode-admin .topbar, body.mode-admin main, body.mode-admin footer { display:
 }
 .tab[aria-selected="true"] { animation: tab-pop 0.45s cubic-bezier(.2,.9,.3,1.5); }
 @keyframes tab-pop { 0% { transform: scale(0.85); } 100% { transform: scale(1); } }
-@media (prefers-reduced-motion: reduce) {
-  .gel, .item.muncul, .tab[aria-selected="true"] { animation: none !important; }
-  .js-anim .item:not(.muncul) { opacity: 1; }
-}
+
 
 /* ===== Judul melayang / mengambang (update) ===== */
 .hero h1 { animation: judul-melayang 6s ease-in-out infinite; }
@@ -424,4 +417,3 @@ body.mode-admin .topbar, body.mode-admin main, body.mode-admin footer { display:
   50% { transform: translateY(-0.2em) rotate(0deg); }
   75% { transform: translateY(-0.09em) rotate(2deg); }
 }
-@media (prefers-reduced-motion: reduce) { .hero h1 { animation: none; } }
