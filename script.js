@@ -412,3 +412,56 @@ document.getElementById("lihat").addEventListener("click", e => { e.preventDefau
 
 // ===== MULAI =====
 muatData().then(d => { data = d; renderPublik(); rute(); });
+
+// ===== ANIMASI JUDUL: pecah huruf agar bisa bergerak satu per satu =====
+(function () {
+  const h1 = document.querySelector(".hero h1");
+  if (!h1) return;
+  h1.setAttribute("aria-label", "Cak Jul Seafood");
+  let n = 0;
+  [...h1.childNodes].forEach(node => {
+    if (node.nodeType !== 3) return;
+    const frag = document.createDocumentFragment();
+    [...node.textContent].forEach(ch => {
+      if (ch === " ") { frag.appendChild(document.createTextNode(" ")); return; }
+      const s = document.createElement("span");
+      s.className = "huruf"; s.setAttribute("aria-hidden", "true");
+      s.style.setProperty("--d", n++); s.textContent = ch;
+      frag.appendChild(s);
+    });
+    node.replaceWith(frag);
+  });
+})();
+
+// ===== ANIMASI KARTU "NYAM": bereaksi saat kursor / jari mendekat =====
+(function () {
+  const JARAK = 70; // px dari tepi kartu
+  let tunggu = false, px = 0, py = 0;
+  function proses() {
+    tunggu = false;
+    document.querySelectorAll(".item").forEach(k => {
+      const r = k.getBoundingClientRect();
+      const dx = Math.max(r.left - px, 0, px - r.right);
+      const dy = Math.max(r.top - py, 0, py - r.bottom);
+      const dekat = Math.hypot(dx, dy) < JARAK;
+      if (dekat) {
+        const ic = k.querySelector(".icon");
+        if (ic && !ic.querySelector(".emo")) ic.innerHTML = `<span class="emo">${ic.textContent}</span>`;
+        const x = Math.min(Math.max((px - r.left) / r.width, 0), 1);
+        const y = Math.min(Math.max((py - r.top) / r.height, 0), 1);
+        k.style.setProperty("--ry", ((x - 0.5) * 14).toFixed(1) + "deg");
+        k.style.setProperty("--rx", ((0.5 - y) * 14).toFixed(1) + "deg");
+        k.style.setProperty("--gx", (x * 100).toFixed(0) + "%");
+        k.style.setProperty("--gy", (y * 100).toFixed(0) + "%");
+      }
+      k.classList.toggle("dekat", dekat);
+    });
+  }
+  function gerak(x, y) { px = x; py = y; if (!tunggu) { tunggu = true; requestAnimationFrame(proses); } }
+  function bersih() { document.querySelectorAll(".item.dekat").forEach(k => k.classList.remove("dekat")); }
+  document.addEventListener("mousemove", e => gerak(e.clientX, e.clientY));
+  ["touchstart", "touchmove"].forEach(t =>
+    document.addEventListener(t, e => { const p = e.touches[0]; if (p) gerak(p.clientX, p.clientY); }, { passive: true }));
+  document.addEventListener("touchend", () => setTimeout(bersih, 700));
+  document.addEventListener("mouseleave", bersih);
+})();
