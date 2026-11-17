@@ -487,3 +487,50 @@ muatData().then(d => { data = d; renderPublik(); rute(); });
     pantau(g);
   });
 })();
+
+// ===== GELOMBANG AIR (digambar terus lewat JavaScript) =====
+(function () {
+  const kotak = document.querySelector(".ombak");
+  if (!kotak) return;
+  const NS = "http://www.w3.org/2000/svg", W = 1440, H = 100, LANGKAH = 16;
+  kotak.querySelectorAll(".gel").forEach(s => s.remove());
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("preserveAspectRatio", "none");
+  svg.style.cssText = "position:absolute;left:0;bottom:0;width:100%;height:100%;display:block";
+  // lapisan: warna, tinggi dasar, tinggi ombak, panjang gelombang, kecepatan
+  const lapis = [
+    { warna: "rgba(243,248,247,0.30)", dasar: 38, a: 14, k: 0.0042, v: 0.9, a2: 6, k2: 0.011, v2: -1.3 },
+    { warna: "rgba(243,248,247,0.55)", dasar: 58, a: 12, k: 0.0058, v: -1.2, a2: 5, k2: 0.014, v2: 1.7 },
+    { warna: "#F3F8F7",               dasar: 78, a: 9,  k: 0.0075, v: 1.6, a2: 4, k2: 0.019, v2: -2.1 }
+  ].map(l => {
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("fill", l.warna);
+    svg.appendChild(p);
+    return Object.assign(l, { p });
+  });
+  kotak.appendChild(svg);
+
+  function gambar(t) {
+    lapis.forEach(l => {
+      let d = `M0,${H} L0,${l.dasar}`;
+      for (let x = 0; x <= W; x += LANGKAH) {
+        const y = l.dasar + l.a * Math.sin(x * l.k + t * l.v) + l.a2 * Math.sin(x * l.k2 + t * l.v2);
+        d += ` L${x},${y.toFixed(1)}`;
+      }
+      l.p.setAttribute("d", d + ` L${W},${H} Z`);
+    });
+  }
+  let jalan = true, id;
+  function putar(ms) { gambar(ms / 1000); if (jalan) id = requestAnimationFrame(putar); }
+  gambar(0);
+  id = requestAnimationFrame(putar);
+  // hemat baterai: berhenti saat hero tidak terlihat
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(e => {
+      const lihat = e[0].isIntersecting;
+      if (lihat && !jalan) { jalan = true; id = requestAnimationFrame(putar); }
+      if (!lihat) { jalan = false; cancelAnimationFrame(id); }
+    }).observe(document.getElementById("hero"));
+  }
+})();
