@@ -359,6 +359,44 @@ document.getElementById("reset").addEventListener("click", () => {
 });
 document.getElementById("keluar").addEventListener("click", () => { setLogin(false); location.hash = ""; });
 
+
+// ===== PUBLIKASI KE GITHUB =====
+// Mengirim data (termasuk foto) ke data.json di repository lewat GitHub API,
+// supaya semua pengunjung di perangkat mana pun melihat data yang sama.
+const GH_KUNCI = "cakjul-gh";
+function bacaGh() { try { return JSON.parse(localStorage.getItem(GH_KUNCI)) || {}; } catch (e) { return {}; } }
+["repo", "branch", "token"].forEach(k => {
+  const el = document.getElementById("gh-" + k);
+  el.value = bacaGh()[k] || "";
+  el.addEventListener("input", () => {
+    const c = bacaGh(); c[k] = el.value.trim();
+    try { localStorage.setItem(GH_KUNCI, JSON.stringify(c)); } catch (e) {}
+  });
+});
+document.getElementById("publikasi").addEventListener("click", async () => {
+  const c = bacaGh();
+  if (!c.repo || !c.token) { info("Isi Repository dan Token GitHub dulu"); return; }
+  const branch = c.branch || "main";
+  const url = "https://api.github.com/repos/" + c.repo + "/contents/data.json";
+  const h = { Authorization: "Bearer " + c.token, Accept: "application/vnd.github+json" };
+  info("Mengirim ke GitHub...");
+  try {
+    let sha;
+    const g = await fetch(url + "?ref=" + encodeURIComponent(branch), { headers: h, cache: "no-store" });
+    if (g.ok) sha = (await g.json()).sha;
+    else if (g.status !== 404) throw new Error("Gagal membaca repo (" + g.status + "). Cek nama repo dan token");
+    const isi = btoa(unescape(encodeURIComponent(JSON.stringify(kerja))));
+    const body = { message: "Update data menu dari panel admin", content: isi, branch };
+    if (sha) body.sha = sha;
+    const p = await fetch(url, { method: "PUT", headers: h, body: JSON.stringify(body) });
+    if (!p.ok) throw new Error("Gagal mengirim (" + p.status + "). Pastikan token punya izin Contents: Read and write");
+    try { localStorage.setItem(KUNCI, JSON.stringify(kerja)); } catch (e) {}
+    data = JSON.parse(JSON.stringify(kerja));
+    renderPublik();
+    info("Berhasil! Tunggu 1-2 menit, lalu perangkat lain akan melihat data terbaru");
+  } catch (err) { info(err.message || "Gagal publikasi"); }
+});
+
 // ===== PETA LOKASI =====
 // Gambar peta disusun dari tile OpenStreetMap di titik koordinat warung.
 // Kalau tile gagal dimuat (offline), yang tampil adalah gambar peta sederhana bawaan.
