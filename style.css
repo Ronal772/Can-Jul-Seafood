@@ -417,3 +417,7 @@ body.mode-admin .topbar, body.mode-admin main, body.mode-admin footer { display:
   50% { transform: translateY(-0.2em) rotate(0deg); }
   75% { transform: translateY(-0.09em) rotate(2deg); }
 }
+  .adm-kartu label { display: block; margin: 12px 0 4px; font-weight: 500; }
+.adm-kartu label input[type="text"],
+.adm-kartu label input[type="password"] { display: block; width: 100%; margin-top: 6px; padding: 10px 12px; border: 1px solid #cfd8d6; border-radius: 10px; font: inherit; }
+
