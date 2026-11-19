@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -164,6 +164,20 @@
 
     <div class="adm-isi">
       <section class="adm-kartu">
+        <h2>Publikasi ke GitHub</h2>
+        <p class="note">Isi sekali saja di perangkat admin. Setelah itu tombol <b>Publikasikan</b> mengirim menu, promo, dan semua foto ke GitHub, sehingga tampil di semua perangkat.</p>
+        <label>Repository (contoh: username/nama-repo)
+          <input type="text" id="gh-repo" placeholder="username/nama-repo" autocomplete="off">
+        </label>
+        <label>Branch
+          <input type="text" id="gh-branch" placeholder="main" autocomplete="off">
+        </label>
+        <label>Token GitHub (hanya disimpan di browser ini)
+          <input type="password" id="gh-token" placeholder="github_pat_..." autocomplete="off">
+        </label>
+      </section>
+
+      <section class="adm-kartu">
         <h2>Background judul website</h2>
         <p class="note">Gambar ini jadi latar bagian paling atas website (tempat tulisan Cak Jul Seafood).</p>
         <div class="hero-prev" id="hero-prev"><span>Belum ada gambar</span></div>
@@ -195,9 +209,10 @@
       <button type="button" class="btn-batal" id="reset">Reset</button>
       <button type="button" class="btn-batal" id="ekspor">Unduh data.json</button>
       <button type="button" class="btn btn-small" id="simpan">Simpan</button>
+      <button type="button" class="btn btn-small" id="publikasi">Publikasikan</button>
     </div>
   </div>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
